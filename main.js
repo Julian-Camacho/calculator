@@ -33,6 +33,12 @@ document.addEventListener("DOMContentLoaded", function(){
         prevDisplay.textContent = curValue;
         curDisplay.textContent = curValue;
     })
+
+    equal.addEventListener("click", function(){
+        calculate()
+        prevDisplay.textContent = "";
+        curDisplay.textContent = prevValue;
+    })
 })
 
 function handleNumber(num){
@@ -45,4 +51,27 @@ function handleOperator(op){
     operator = op;
     prevValue = curValue;
     curValue = "";
+}
+
+function calculate(){
+    prevValue = Number(prevValue);
+    curValue = Number(curValue);
+
+    if(operator === "+"){
+        prevValue += curValue;
+    } else if(operator === "-"){
+        prevValue -= curValue;
+    } else if(operator === "*"){
+        prevValue *= curValue;
+    } else{
+        prevValue /= curValue;
+    }
+    
+    prevValue = roundNum(prevValue);
+    prevValue = prevValue.toString();
+    curValue = prevValue.toString();
+}
+
+function roundNum(num){
+    return Math.round(num * 1000) / 1000;
 }
