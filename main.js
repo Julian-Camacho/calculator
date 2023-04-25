@@ -39,6 +39,10 @@ document.addEventListener("DOMContentLoaded", function(){
         prevDisplay.textContent = "";
         curDisplay.textContent = prevValue;
     })
+
+    decimal.addEventListener("click", function(){
+        addDececimal()
+    })
 })
 
 function handleNumber(num){
@@ -74,4 +78,10 @@ function calculate(){
 
 function roundNum(num){
     return Math.round(num * 1000) / 1000;
+}
+
+function addDececimal(){
+    if(!curValue.includes(".")){
+        curValue += ".";
+    }
 }
